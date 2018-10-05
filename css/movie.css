@@ -1,0 +1,21 @@
+.navbar-brand {
+  cursor: pointer;
+}
+
+header {
+  display: flex;
+  margin: 2rem 0;
+}
+
+h3 {
+  display: inline;
+}
+
+button {
+  display: block;
+  margin-left: 2rem;
+}
+
+.info-card {
+  margin-bottom: 4rem;
+}
