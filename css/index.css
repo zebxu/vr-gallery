@@ -53,3 +53,8 @@ main {
   width: 80%;
   height: auto;
 }
+
+.pageNav {
+  display: flex;
+  justify-content: center;
+}
