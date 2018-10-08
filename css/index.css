@@ -23,6 +23,13 @@ main {
   margin: 0 1rem;
 }
 
+.search-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 1rem;
+}
+
 .movie-card img {
   width: 100%;
   cursor: pointer;
