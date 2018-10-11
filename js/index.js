@@ -1,9 +1,10 @@
+'use strict';
 const end_point = 'https://api.avgle.com/v1/videos/';
 const search_end_point = 'https://api.avgle.com/v1/video/';
 // let page = 0;
 let hasMore = false;
 let query_o = 'mr';
-let scroll = 0;
+var scrollPos = 0;
 let api_url = end_point + '0?c=21&o=mr&limit=10';
 let total_page = 0;
 
@@ -22,34 +23,38 @@ $(document).ready(() => {
 
   // Handle Search Button click
   $('.form-inline button').click(() => {
+    console.log('search button click!');
     var query = $('.form-inline input').val();
     changePath('search/' + query);
   });
 
-  $('body').on('click', 'a.page-link', e => {
+  $('body').on('click', '.movie-card', e => {
     console.log('a click!');
     e.preventDefault();
+    scrollPos = $(window).scrollTop();
   });
 });
 
 function renderMain(type) {
   console.log('render main page ' + type);
+  console.log('scroll to ' + scrollPos);
   // Toggle component view
   $('.not-found-msg').hide();
   $('.movie-group').show();
-  $('.movie-info').hide();
+  $('.movie-info').empty();
   $('.pageNav').show();
   $('.search-result').hide();
-
+  $('.form-inline input').val('');
   query_o = type;
   refreshMovies();
   $('.' + type).toggleClass('active');
+  $('html').scrollTop(scrollPos);
 }
 
 function renderMainToPage(p) {
   $('.not-found-msg').hide();
   $('.movie-group').show();
-  $('.movie-info').hide();
+  $('.movie-info').empty();
   $('.pageNav').show();
   $('.search-result').hide();
   $('.not-found-msg').hide();
@@ -62,7 +67,7 @@ function renderSearch(q) {
   $('.form-inline input').val('');
   $('.movie-group').hide();
   $('.pageNav').show();
-  $('.movie-info').hide();
+  $('.movie-info').empty();
   $('.search-result').show();
   search(q, 1);
 }
@@ -72,7 +77,7 @@ function renderSearchToPage(q, p) {
   $('.form-inline input').val('');
   $('.movie-group').hide();
   $('.pageNav').show();
-  $('.movie-info').hide();
+  $('.movie-info').empty();
   $('.search-result').show();
   gotoSearchPage(q, p);
 }
@@ -92,6 +97,6 @@ function renderNotFound() {
   $('.movie-group').hide();
   $('.search-result').hide();
   $('.pageNav').hide();
-  $('.movie-info').hide();
+  $('.movie-info').empty();
   $('.not-found-msg').show();
 }

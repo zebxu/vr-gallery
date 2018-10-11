@@ -1,7 +1,5 @@
 function refreshMovies() {
-  $('.form-inline input').val('');
   $('.movie-group').empty();
-  $('.pagination').show();
   getMovies(1);
 }
 

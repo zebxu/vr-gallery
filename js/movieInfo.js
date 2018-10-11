@@ -1,9 +1,8 @@
 function movieSelected(id) {
   // sessionStorage.setItem('movieId', id);
-  scroll = $(window).scrollTop();
-  $('nav.pageNav').hide();
-  $('.movie-group').hide();
-  $('.search-result').hide();
+  // scrollPos = $(window).scrollTop();
+  // console.log('scroll position is saved scroll:' + scrollPos);
+  $('.movie-info').empty();
   getVideoPage(id);
   return false;
 }
@@ -12,9 +11,6 @@ function getVideoPage(id) {
   axios.get(search_end_point + id).then(res => {
     if (res.data.success == false) {
       let output = `
-        <button class="btn btn-primary" onclick="goBack()">
-          Go back
-        </button>
         <div class="alert alert-danger mt-4" role="alert">
           ${res.data.response.error_message}
         </div>
@@ -24,9 +20,6 @@ function getVideoPage(id) {
       let movie = res.data.response.video;
       console.log(movie);
       let output = `
-    <button class="btn btn-primary" onclick="goBack()">
-      Go back
-    </button>
     <header>
       <h3>${movie.title}</h3>
       <button class="btn btn-primary btn-sm" id="copyButton" onclick="textCopy()">Copy</button>
@@ -42,14 +35,6 @@ function getVideoPage(id) {
       $('.movie-info').append(output);
     }
   });
-}
-
-function goBack() {
-  // $('.movie-group').show();
-  // $('.movie-info').empty();
-  // $('.search-result').empty();
-  // $('nav.pageNav').show();
-  // $('html').scrollTop(scroll);
 }
 
 function textCopy() {
