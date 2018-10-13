@@ -7,6 +7,7 @@ function getHash() {
 
 function changePath(path) {
   window.location = '#/' + path;
+  return false;
 }
 
 function listen() {
@@ -60,6 +61,7 @@ function routing() {
         }
         break;
       case 'movie':
+        getScrollTop();
         renderMovie(parsed[2]);
         break;
       default:
@@ -68,4 +70,17 @@ function routing() {
   } else {
     renderMain('mr');
   }
+}
+
+function getScrollTop() {
+  var scrollPos = $(window).scrollTop();
+  sessionStorage.setItem('scrollPos', scrollPos);
+  // document.cookie = 'scrollPos=' + $(window).scrollTop();
+  console.log('scroll top saved: ' + scrollPos);
+}
+
+function scrollToSavedPos() {
+  console.log('getCookieVal = ' + sessionStorage.getItem('scrollPos'));
+  $(window).scrollTop(sessionStorage.getItem('scrollPos'));
+  sessionStorage.setItem('scrollPos', 0);
 }

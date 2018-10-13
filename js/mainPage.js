@@ -10,7 +10,6 @@ function getMovies(page) {
   axios
     .get(api_url)
     .then(res => {
-      console.log(res.data.response);
       let movies = res.data.response.videos;
       total_page = Math.floor(res.data.response.total_videos / 10) + 1;
       $.each(movies, (index, movie) => {
@@ -24,7 +23,7 @@ function getMovies(page) {
             })">
               <source src="${movie.preview_video_url}" type="video/mp4">
             </video>
-            <a href="#${movie.vid}" onclick="changePath('movie/'+${
+            <a href="#${movie.vid}" onclick="return changePath('movie/'+${
           movie.vid
         })">${movie.title}</a>
           </div>
@@ -36,6 +35,9 @@ function getMovies(page) {
       renderPagination(page); // from pagination.js
       getActivePageNum(page); // from pagination.js
       getActiveTab();
+    })
+    .then(() => {
+      scrollToSavedPos();
     })
     .catch(error => {
       console.log(error);

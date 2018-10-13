@@ -4,7 +4,6 @@ const search_end_point = 'https://api.avgle.com/v1/video/';
 // let page = 0;
 let hasMore = false;
 let query_o = 'mr';
-var scrollPos = 0;
 let api_url = end_point + '0?c=21&o=mr&limit=10';
 let total_page = 0;
 
@@ -23,32 +22,22 @@ $(document).ready(() => {
 
   // Handle Search Button click
   $('.form-inline button').click(() => {
-    console.log('search button click!');
     var query = $('.form-inline input').val();
     changePath('search/' + query);
-  });
-
-  $('body').on('click', '.movie-card', e => {
-    console.log('a click!');
-    e.preventDefault();
-    scrollPos = $(window).scrollTop();
   });
 });
 
 function renderMain(type) {
-  console.log('render main page ' + type);
-  console.log('scroll to ' + scrollPos);
   // Toggle component view
   $('.not-found-msg').hide();
   $('.movie-group').show();
   $('.movie-info').empty();
   $('.pageNav').show();
-  $('.search-result').hide();
+  $('.search-result').empty();
   $('.form-inline input').val('');
   query_o = type;
   refreshMovies();
   $('.' + type).toggleClass('active');
-  $('html').scrollTop(scrollPos);
 }
 
 function renderMainToPage(p) {
@@ -56,16 +45,15 @@ function renderMainToPage(p) {
   $('.movie-group').show();
   $('.movie-info').empty();
   $('.pageNav').show();
-  $('.search-result').hide();
+  $('.search-result').empty();
   $('.not-found-msg').hide();
   gotoPage(p);
 }
 
 function renderSearch(q) {
-  console.log('render search');
   $('.not-found-msg').hide();
   $('.form-inline input').val('');
-  $('.movie-group').hide();
+  $('.movie-group').empty();
   $('.pageNav').show();
   $('.movie-info').empty();
   $('.search-result').show();
@@ -75,7 +63,7 @@ function renderSearch(q) {
 function renderSearchToPage(q, p) {
   $('.not-found-msg').hide();
   $('.form-inline input').val('');
-  $('.movie-group').hide();
+  $('.movie-group').empty();
   $('.pageNav').show();
   $('.movie-info').empty();
   $('.search-result').show();
@@ -85,15 +73,14 @@ function renderSearchToPage(q, p) {
 function renderMovie(id) {
   $('.not-found-msg').hide();
   $('.form-inline input').val('');
-  $('.movie-group').hide();
-  $('.search-result').hide();
+  $('.movie-group').empty();
+  $('.search-result').empty();
   $('.movie-info').show();
   $('.pageNav').hide();
   movieSelected(id);
 }
 
 function renderNotFound() {
-  console.log('page not found!');
   $('.movie-group').hide();
   $('.search-result').hide();
   $('.pageNav').hide();

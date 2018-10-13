@@ -1,7 +1,4 @@
 function movieSelected(id) {
-  // sessionStorage.setItem('movieId', id);
-  // scrollPos = $(window).scrollTop();
-  // console.log('scroll position is saved scroll:' + scrollPos);
   $('.movie-info').empty();
   getVideoPage(id);
   return false;
@@ -18,7 +15,6 @@ function getVideoPage(id) {
       $('.movie-info').append(output);
     } else {
       let movie = res.data.response.video;
-      console.log(movie);
       let output = `
     <header>
       <h3>${movie.title}</h3>
@@ -38,7 +34,6 @@ function getVideoPage(id) {
 }
 
 function textCopy() {
-  console.log('copy click');
   var $temp = $('<input>');
   $('body').append($temp);
   $temp.val($('h3').text()).select();
