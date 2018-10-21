@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/movie.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="../js/router.js"></script>
+  <script src="../js/index.js"></script>
+  <script src="../js/pagination.js"></script>
+  <script src="../js/search.js"></script>
+  <script src="../js/movieInfo.js"></script>
+  <script src="../js/mainPage.js"></script>
+  <meta name="referrer" content="none">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm navbar-light bg-light shadow">
+    <a href="#" class="navbar-brand">VR Gallery</a>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" id="mr" href="#/mr">Most Recent</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="mv" href="#/mv">Most Viewd</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="tf" href="#/tf">Most Liked</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="tr" href="#/tr">Top Rated</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
+    </form>
+  </nav>
+  <main>
+    <div class="container">
+      <nav class="pageNav">
+        <ul class="pagination">
+        </ul>
+      </nav>
+      <div class="movie-group"></div>
+      <div class="movie-info"></div>
+      <div class="search-result"></div>
+      <div class="not-found-msg">
+        <p>404: Page not found !</p>
+      </div>
+      <nav class="pageNav">
+        <ul class="pagination">
+        </ul>
+      </nav>
+    </div>
+  </main>
+</body>
+
+</html>
