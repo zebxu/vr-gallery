@@ -8,7 +8,7 @@
   },
   "author": "",
   "license": "ISC",
-  "homepage": "https://zebxu.github.io/vr-gallery",
+  "homepage": "https://zebxu.github.io/vrgallery",
   "dependencies": {
     "axios": "^0.18.0",
     "gh-pages": "^2.0.1"
