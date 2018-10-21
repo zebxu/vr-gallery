@@ -16,6 +16,7 @@ $(document).ready(() => {
     changePath('/');
   });
   $('.nav-link').click(() => {
+    sessionStorage.setItem('scrollPos', 0);
     var target = $('this').attr('id');
     changePath(target);
   });
