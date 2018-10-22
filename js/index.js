@@ -23,6 +23,7 @@ $(document).ready(() => {
 
   // Handle Search Button click
   $('.form-inline button').click(() => {
+    sessionStorage.setItem('scrollPos', 0);
     var query = $('.form-inline input').val();
     changePath('search/' + query);
   });
